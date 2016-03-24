@@ -113,6 +113,22 @@ const proxify = (router, localUrl, webUrl) => {
 // examples:
 // proxify(router, '/yummly/recipes', 'http://api.yummly.com/v1/api/recipes')
 // proxify(router, '/brewery/styles', 'https://api.brewerydb.com/v2/styles')
+const querify = (str='') =>
+    str.slice(1).split('&').reduce((a,v) => {
+        let [key, val] = v.split('=')
+        return {...a, [key]: val}
+    }, {})
+
+router.get('/image', async (ctx, next) => {
+    try {
+        let img = querify(ctx.req._parsedUrl.search).src
+        var data = request(img)
+    } catch(e) {
+        ctx.body = e
+        return
+    }
+    ctx.body = data
+})
 
 const guid = (function() {
     const s4 = () => Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
