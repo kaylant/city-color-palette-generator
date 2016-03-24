@@ -71,6 +71,7 @@
     "csswring": "^4.0",
     "envify": "^3.4",
     "exorcist": "^0.4",
+    "jquery": "^2.2.2",
     "koa": "^2.0.0-alpha.3",
     "koa-passport": "^2.0.1",
     "koa-router": "^7",
