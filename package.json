@@ -36,7 +36,7 @@
     "transpile-once": "babel js --out-dir ./build",
     "js": "watchify -e build/app.js -v -d --delay 16 -o 'exorcist dist/app.js.map > dist/app.js'",
     "js-once": "browserify -e build/app.js -v -d  | exorcist dist/app.js.map > dist/app.js",
-    "server": "pm2 kill; pm2 start app.js -i -4;",
+    "server": "pm2 kill; pm2 start app.js;",
     "restart": "pm2 restart all",
     "start": "npm-run-all --parallel transpile js watch:styles server",
     "start:n": "npm-run-all --parallel transpile js watch:js watch:styles server",
